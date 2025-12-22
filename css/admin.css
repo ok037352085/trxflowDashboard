@@ -208,6 +208,7 @@ header {
 .card {
     margin: 0;
     text-align: center;
+    border-radius: 14px;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.3)0%, rgba(100, 228, 185, 0.9) 69%);
     /* background: linear-gradient(70deg, #01461e 0%, #222 69%); */
 }
