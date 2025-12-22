@@ -1,0 +1,167 @@
+.card-header {
+    border: none;
+}
+
+.fb-info-left span,
+.fb-info-right span {
+    color: #ccc;
+}
+
+.fb-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.fb-info-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fb-info-left p {
+    font-size: 28px;
+    margin: 0;
+}
+
+.fb-price {
+    font-size: 72px;
+    color: #16a34a !important;
+}
+
+.fb-tip {
+    padding-top: 4rem;
+}
+
+.fb-info-tip {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: #999 !important;
+}
+
+/* 左下按鈕區 */
+.fb-left {
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    margin: auto;
+    padding: 4rem;
+}
+
+@media (max-width: 768px) {
+.fb-left {
+    flex-direction: column;
+    padding: 0 2rem;
+}
+}
+
+.fb-left button {
+    width: 100%;
+    font-size: clamp(10px, 4vw, 14px);
+}
+
+/* 表頭 */
+.asset-table-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 16px;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 列表 */
+.asset-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 單列 */
+.asset-list li {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    padding: 10px 4px;
+    font-size: clamp(10px, 1vw, 16px);
+}
+
+.asset-list li:last-child {
+    border-bottom: none;
+}
+
+/* 日期 */
+.asset-list li span:first-child {
+    color: #888;
+    font-size: 12px;
+}
+
+/* 數量 */
+.asset-list li div {
+    margin: 0 auto;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    font-weight: 600;
+    color: #16a34a;
+}
+
+.no-asset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.modal-title {
+    color: #000;
+}
+
+.modal-input {
+    width: 100%;
+    border: 1px solid #16a34a;
+    border-radius: 20px;
+}
+.modal-input:focus {
+    outline: none;
+    padding-left: 1rem;
+}
+
+.modal-btn {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    transition: 0.2s ease;
+    padding: 0.4rem 1rem;
+    font-size: 14px;
+    text-wrap: nowrap;
+}
+
+.modal-btn-active {
+    background-color: #04d67b;
+    color: #e9ecef;
+    border: none;
+    border-radius: 20px;
+    transition: 0.2s ease;
+    padding: 0.4rem 1rem;
+    font-size: clamp(12px, 4vw, 14px);
+    font-weight: 600;
+    text-wrap: nowrap;
+}
+
+.modal-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+.modal-btn-active:hover {
+    background: #eee;
+    color: #16a34a;
+}

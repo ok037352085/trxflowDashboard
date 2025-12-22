@@ -1,0 +1,132 @@
+<div class="bg-top-glow"></div>
+<div class="bg-bottom-glow"></div>   
+   <!-- ① 資源回饋概況 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">TRX 資源回饋概況</h2>
+        </div>
+        <div class="card-body fb-content">
+          <div class="fb-info-left">
+            <div class="fb-info">
+              <p>資源運行中： <span class="fb-price">x,xxx</span> TRX</p>
+              <span class="fb-info-tip" >目前在 TRX 資源回饋機制中運行的 TRX 總額。</span>
+            </div>
+            <div class="fb-info">
+              <p>申請處理中： <span class="fb-price">x,xxx</span> TRX</p>
+              <span class="fb-info-tip">已發起資源退回/調整申請，系統排程處理中的總額。</span>
+            </div>
+          </div>
+          <div class="fb-tip">
+            <p style="font-size: 12px; color: #999;">TRX 資源回饋採 T+1 起算與申請制排程釋出，時間以 UTC 00:00 為基準，詳細規則可於會員制度與 FAQ 中查看。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="rewardArea">
+    <div class="col-md-5 d-flex" style="padding: 0.35rem;">
+      <div class="card flex-fill">
+        <div class="card-header">主要操作列（建立＋退回）</div>
+        <div class="card-body">
+          <div class="fb-left">
+            <button class="active-btn create-resource-btn">建立新資源配置</button>
+            <button class="active-btn" id="open-return-resource-btn">資源退回</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7 d-flex" style="padding: 0.25rem;">
+      <div class="card flex-fill">
+        <div class="card-header">我的資源配置</div>
+        <div class="card-body">
+            <div id="resource-all-card" class="asset-all-card">
+              <div id="resource-content" class="resource-card d-none">
+                <div class="asset-table-header">
+                  <span>金額</span>
+                  <span>建立時間</span>
+                  <span>生效時間</span>
+                  <span class="asset-state">狀態</span>
+                </div>
+                <ul id="resource-list" class="asset-list">
+                    
+                </ul>
+                <div class="asset-btn feedback-btn">
+                  <button>查看詳情</button>
+                </div>
+              </div>
+              <div id="resource-empty" class="no-asset d-none">
+                <h6>你尚未建立任何 TRX 資源配置</h6>
+                <p style="font-size: 12px; color: #999;">建立第一筆資源配置後，你將在這裡看到所有正在運行中的部位和狀態。</p>
+                <button class="active-btn create-resource-btn">建立第一筆資源配置</button>
+              </div>
+            </div>
+            <!-- 建立新資源 Modal -->
+            <div class="modal fade" id="createResourceModal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content p-3">
+                  <div class="modal-header">
+                    <h5 class="modal-title">建立新資源</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" style="border: none; background-color: transparent;">
+                      X
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="trx-amount">本次建立金額（TRX）</label>
+                    <input type="number" id="trx-amount" class="modal-input" min="1" />
+
+                    <p id="estimated-time" class="mt-2 text-muted">預計生效時間：T+1 日 00:00（以 UTC 00:00 為基準）</p>
+
+                    <small style="color: #ccc; font-size: 12px;">
+                      此筆資源將在生效時間後開始計入 TRX 資源回饋。<br>
+                      未來如需調整或退回，可透過「資源退回」發起申請。
+                    </small>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="modal-btn" id="cancel-btn" data-dismiss="modal">取消</button>
+                    <button type="button" id="confirm-create-btn" class="modal-btn-active" >確認建立</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 建立退回質押 Modal -->
+             <div class="modal fade" id="returnResourceModal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content p-3">
+                  <div class="modal-header">
+                    <h5 class="modal-title">申請資源退回</h5>
+                    <button type="button" class="btn-close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="return-amount">本次申請退回金額（TRX）</label>
+                    <input type="number" id="return-amount" class="form-control" min="1" />
+
+                    <p class="mt-2 text-muted" style="font-size: 12px;">
+                      系統將依既定順序（推廣回饋 → 累積回饋 → 資源部位）自動處理本次資源退回。<br>
+                      一般通道單日申請上限為 3,000 USDT 等值，單筆申請最低 300 USDT 等值。超出一般通道範圍的部分，將由專員協助安排釋出與排程。
+                    </p>
+
+                    <p id="large-amount-warning" class="text-warning mt-1" style="display:none;">
+                      本次申請金額較大，系統將採「分批釋出與排程處理」，實際到帳時間將依處理進度而定。
+                    </p>
+
+                    <p id="channel-info" class="text-info mt-1" style="font-size: 13px;"></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="return-cancel-btn" class="modal-btn">取消</button>
+                    <button type="button" id="return-confirm-btn" class="modal-btn-active">確認申請</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 申請紀錄列表 -->
+            <ul id="return-records" class="mt-3"></ul>
+
+          </div>
+      </div>
+    </div>
+  </div>

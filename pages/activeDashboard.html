@@ -1,0 +1,167 @@
+<!-- activeDashboard.html -->
+<!-- 啟用後畫面 -->
+<div class="bg-top-glow"></div>
+<div class="bg-bottom-glow"></div>
+<div class="row d-flex align-items-stretch dashboard">
+    <!-- 資產總覽卡 -->
+    <div class="col-12 d-flex">
+        <div class="card flex-fill mb-0">
+            <div class="card-body">
+                <div class="inner active-top">
+                    <div class="title"><h5>資產總覽與快速操作列</h5></div>
+                    <div class="active-content">
+                        <div class="active-data">
+                            <div class="data">
+                                <p>當前有效質押總額：<span class="data-price">00,000</span> TRX</p>
+                                <span class="data-tip">目前正在運行中的 TRX 質押總額</span>
+                            </div>
+                            <div class="data">
+                                <p>本期已入帳資源回饋：<span class="data-price">000</span> TRX</p>
+                                <span class="data-tip">本日已為你帳號產生的資源回饋（以 UTC 00:00 為當日界線）</span>
+                            </div>
+                            <div class="data">
+                                <p>歷史累計資源回饋：<span class="data-price">0,000</span> TRX</p>
+                                <span class="data-tip">自啟用以來，累計入帳的資源回饋總額</span>
+                            </div>
+                        </div>
+                        <div class="active-top-button-area">
+                            <button class="active-btn" data-page="reward_center" >建立新質押</button>
+                            <button class="btn" data-page="reward_center" data-scroll="rewardArea">查看/調整我的質押</button>
+                            <div class="check-invite-grown">
+                                <a href="#" data-page="growth_center" >查看邀請與成長</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 訂單 & 回饋紀錄卡 -->
+
+            <div class="col-xl-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div id="order-card" class="order-card">
+                            <div id="order-content" class="active-order d-none">
+                                <div class="order-preview-header"><h5>最新訂單</h5></div>
+                                <ul id="order-list" class="order-preview-list"></ul>
+                                <div class="feedback-btn"><button data-page="reward_center" data-scroll="rewardArea">查看全部訂單</button></div>
+                            </div>
+                            <div id="order-empty" class="no-order d-none">
+                                <h5>你還沒有任何 TRX 資源配置</h5>
+                                <p>啟用後，可以在這裡看到所有正在運行的質押部位與狀態。</p>
+                                <button class="active-btn" data-page="reward_center" data-scroll="rewardArea">建立第一筆質押</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div id="feedback-card" class="feedback-card">
+                            <div class="feed-back-header"><h5>回饋紀錄</h5></div>
+                            <div class="feedback-table-header">
+                                <span>日期</span>
+                                <span>內容</span>
+                                <span class="text-end">數量</span>
+                            </div>
+                            <ul id="feedback-list" class="feedback-list"></ul>
+                            <div class="feedback-btn"><button>查看全部回饋紀錄</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <!-- VIP & 推薦成效卡 -->
+
+            <!-- VIP -->
+            <div class="col-lg-6 col-xl-7">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="vip-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="badge badge-gradient-primary shadow px-3 py-2">
+                                    <span class="text-muted align-self-center">當前等級</span>
+                                    <span>VIP 2</span>
+                                </div>
+                            </div>
+                            <p class="vip-desciption mb-3">你目前是<strong>VIP 2</strong>，已啟用對應的資源回饋加成與推薦回饋權益。</p>
+                            <div class="vip-text">
+                                <p class="vip-next-title fw-bold mb-1">升級至VIP 3 的條件摘要：</p>
+                                <ul class="list-unstyled ps-3 mb-3">
+                                    <li>有效質押總額達到約 <strong>XXX TRX</strong></li>
+                                    <li>推薦滿 <strong>X 位</strong> 已啟用資源回饋的會員</li>
+                                </ul>
+                            </div>
+                            <div class="mb-5">
+                                <div class="d-flex justify-content-between small">
+                                    <span>有效質押量進度</span>
+                                    <span>70 %</span>
+                                </div>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar" style="width: 70%; background: #00bf8c;"></div>
+                                </div>
+                            </div>
+                            <div class="feedback-btn">
+                                <button class="feedback-btn" data-page="growth_center">
+                                    查看完整權益與升級條件
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推薦成效 -->
+            <div class="col-lg-6 col-xl-5" style="margin-bottom: 0.5rem;">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="referral-card">
+                            <h5 class="fw-bold mb-3">推薦成效</h5>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">已成功推薦會員：</span>
+                                    <span class="fw-bold">X 位</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">已啟用資源回饋的會員：</span>
+                                    <span class="fw-bold">Y 位</span>
+                                </div>
+                            </div>
+
+                            <hr class="my-3" />
+
+
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">本期來自推薦的資源回饋：</span>
+                                    <span class="fw-bold text-success">xxx TRX</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">累計來自推薦的資源回饋：</span>
+                                    <span class="fw-bold">x,xxx TRX</span>
+                                </div>
+                            </div>
+                            
+                            <hr class="my-3" />
+
+                            <div class="referral-tool">
+                                <label class="form-label">邀請連結</label>
+                                <div class="input-group invite-link">
+                                    <input type="text" class="form-control clipboard" value="https://trxflow.com/r/123123" readonly />
+                                    <button class="copy-btn copy-btn-dashboard active-btn" style="border-radius: 0 20px 20px 0;">
+                                        <i class="fa-solid fa-copy"></i>
+                                        <span>複製邀請連結</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</div>

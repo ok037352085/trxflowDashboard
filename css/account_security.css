@@ -1,0 +1,20 @@
+.offical-title,
+.wired-title {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.offical-wont-do,
+.wired-setup {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 1rem;
+}
+
+.offical-wont-do li,
+.wired-setup li {
+    color: #ccc;
+    text-align: start;
+}

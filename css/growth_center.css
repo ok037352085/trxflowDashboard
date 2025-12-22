@@ -1,0 +1,30 @@
+.mid-item {
+    background: linear-gradient(110deg, #999 0%, #555 75%);
+}
+
+.bottom-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+tr:hover {
+    color: #fff !important;
+}
+
+@media (max-width: 600px) {
+    .bottom-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .copy-btn-growth-center {
+        border-radius: 20px !important;
+        margin: auto;
+    }
+    
+}
