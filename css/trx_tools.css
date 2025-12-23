@@ -1,3 +1,8 @@
 .trx-tools-btn {
     font-size: 14px;
 }
+
+.card-nocard ul {
+    list-style: none;
+    margin-left: 4rem;
+}

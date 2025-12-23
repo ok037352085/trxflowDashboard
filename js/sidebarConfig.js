@@ -15,7 +15,7 @@ window.SidebarConfig = {
         {
             key: 'enable_flow',
             label: '啟用流程/任務',
-            page: 'dashboard',
+            page: null,
             icon: 'fa-solid fa-star',
             scroll: true
         },
