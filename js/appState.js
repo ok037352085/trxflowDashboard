@@ -10,7 +10,6 @@ window.AppState = {
   },
 
   async fetchUserData() {
-    // const res = await fetch('/api/userStatus')
     const data = await Promise.resolve({
       enabled: this.user.isServiceEnabled,
       progress: this.user.progress,

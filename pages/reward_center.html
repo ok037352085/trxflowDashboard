@@ -64,6 +64,26 @@
                 <button class="active-btn create-resource-btn">建立第一筆資源配置</button>
               </div>
             </div>
+            <div id="return-resource-card" class="card mt-3">
+            <div class="card-header">資源退回清單</div>
+            <div class="card-body">
+              <div id="return-resource-content" class="d-none">
+                <div class="asset-table-header">
+                  <span>申請時間</span>
+                  <span>申請金額</span>
+                  <span>處理通道</span>
+                  <span>狀態</span>
+                </div>
+                <ul id="return-resource-list" class="asset-list"></ul>
+              </div>
+              <div id="return-resource-empty" class="no-asset d-none">
+                <h6>目前沒有任何資源退回申請</h6>
+                <p style="font-size: 12px; color: #999;">
+                  當你透過「資源退回」發起申請後，處理進度會顯示在這裡。
+                </p>
+              </div>
+            </div>
+          </div>
             <!-- 建立新資源 Modal -->
             <div class="modal fade" id="createResourceModal" tabindex="-1">
               <div class="modal-dialog">
@@ -98,11 +118,11 @@
                 <div class="modal-content p-3">
                   <div class="modal-header">
                     <h5 class="modal-title">申請資源退回</h5>
-                    <button type="button" class="btn-close"></button>
+                    <button type="button" class="btn-close" style="border: none; background-color: transparent;">X</button>
                   </div>
                   <div class="modal-body">
                     <label for="return-amount">本次申請退回金額（TRX）</label>
-                    <input type="number" id="return-amount" class="form-control" min="1" />
+                    <input type="number" id="return-amount" class="modal-input" min="1" />
 
                     <p class="mt-2 text-muted" style="font-size: 12px;">
                       系統將依既定順序（推廣回饋 → 累積回饋 → 資源部位）自動處理本次資源退回。<br>

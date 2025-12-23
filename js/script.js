@@ -1,6 +1,8 @@
 async function initApp() {
   await AppState.fetchUserData();
 
+  // initHeaderServiceToggle();
+
   renderSidebar();
   bindSidebarEvents();
   initSidebarToggle();
@@ -9,6 +11,7 @@ async function initApp() {
   const defaultPage = getDefaultPage();
   await loadPage(defaultPage);
 
+
   initCardsAfterPageLoad();
 
   // 初始化進度條文字與寬度
@@ -16,3 +19,14 @@ async function initApp() {
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
+
+
+
+
+
+
+
+
+
+
+

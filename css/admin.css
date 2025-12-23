@@ -3,7 +3,9 @@ html{
 }
 
 .content-wrapper {
-    background: #000804f3;
+      background:
+    linear-gradient(90deg, #ffffff 0%, #00ff9193 45%)
+    #1ffa9b;
 }
 
 /* adminLTe 自訂色 */
@@ -28,16 +30,16 @@ html{
   color: #000000 !important;
 }
 
-.bg-glow {
+/* .bg-glow {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 
   background:
     linear-gradient(90deg, #ffffff 0%, #00ff9193 45%)
     #1ffa9b;
-}
+} */
 
 /* 上方光暈 */
 .bg-top-glow {
