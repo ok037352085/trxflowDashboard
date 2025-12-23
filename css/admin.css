@@ -35,14 +35,8 @@ html{
   z-index: 0;
 
   background:
-    /* radial-gradient(
-      circle at 50% 50%,
-      #01ad63 0%,
-      #00a75e 30%,
-      #017e47 55%,
-      #fff 95%
-    ); */
-    #ccc
+    linear-gradient(90deg, #ffffff 0%, #00ff9193 45%)
+    #1ffa9b;
 }
 
 /* 上方光暈 */
@@ -176,6 +170,10 @@ html{
 }
 
 /* Sidebar */
+.main-sidebar {
+    /* background: linear-gradient(90deg, #ffffff 60%, #00ff91 100%); */
+}
+
 .nav-link.is-locked {
     opacity: 0.5;
     pointer-events: none;
@@ -209,7 +207,7 @@ html{
     text-align: center;
     border-radius: 14px;
     /* background: linear-gradient(60deg, #00c771 0%, #018048 79%); */
-    /* background: linear-gradient(60deg, #eee 0%, #ccc 79%); */
+    /* background: linear-gradient(60deg, #62fab8 0%, #1bf596 79%); */
     background: #fff;
 }
 .inner {
