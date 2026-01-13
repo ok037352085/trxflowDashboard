@@ -2,11 +2,6 @@
     border: none;
 }
 
-.fb-info-left span,
-.fb-info-right span {
-    color: #ccc;
-}
-
 .fb-content {
     display: flex;
     flex-direction: column;
@@ -20,6 +15,66 @@
     align-items: center;
 }
 
+#reward-overview {
+    width: 100%;
+    padding: 0 6rem;
+}
+
+.overview-row {
+    /* background: red; */
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    margin: 0 6rem;
+    gap: 2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* 左側 */
+.overview-left {
+    flex: 0 0 40%;
+}
+
+.dashboard-section01-data-title {
+    display: flex;
+    width: max-content;
+}
+
+.dashboard-section01-data-title span {
+    height: 100%;
+    align-self: flex-end;
+}
+
+.overview-left h3 {
+    margin-bottom: 0;
+}
+
+/* 右側 */
+.overview-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+/* 右側每一行 */
+.value-row {
+    display: flex;
+    justify-content: space-between; /* ← 關鍵 */
+    align-items: baseline;
+}
+
+.value {
+    display: flex;
+    font-size: 20px;
+}
+
+.value small {
+    display: block;
+    font-size: 16px;
+    opacity: .7;
+}
 .fb-info-left p {
     font-size: 28px;
     margin: 0;
@@ -164,4 +219,72 @@
 .modal-btn-active:hover {
     background: #eee;
     color: #16a34a;
+}
+
+@media (max-width: 1410px) {
+    .dashboard-section01-data-title {
+        display: flex;
+        flex-direction: column;
+    }
+    .overview-row {
+        margin: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    #reward-overview {
+        padding: 0;
+    }
+    .overview-row {
+        margin: 0;
+    }
+
+    .value {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .data {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 540px) {
+    .overview-row {
+        text-align: center;
+        align-items: center;
+    }
+
+    .overview-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .dashboard-section01-data-title {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dashboard-section01-data-title span {
+        height: 100%;
+        align-self: center;
+    }
+
+    .value-row {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .label {
+        font-size: 14px;
+        text-wrap: nowrap;
+        width: 100%;
+    }
 }

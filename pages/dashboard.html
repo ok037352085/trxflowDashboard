@@ -1,201 +1,271 @@
+<head>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<!-- activeDashboard.html -->
 <div class="bg-glow"></div>
-<div class="row">
-    <!-- 區塊1 -->
-    <div class="col-xl-6 d-flex">
-        <div class="card flex-fill">
-            <div class="card-body">
-                <div class="inner card-lt">
-                    <h5>帳號總覽</h5>
-                    <div>
-                    <div>
-                        <span>帳號：</span>
-                        <span style="color: #999;">xxx@gmail.com</span>
-                    </div>
-                    <div>
-                        <span>帳號狀態：</span>
-                        <span class="status-text" id="userStatusText"></span>
-                    </div>
-                    </div>
-                    <div class="card-lt-content">
-                        <p>你已成功建立 TRXFlow 帳號，現在可以使用我們提供的 TRON 工具與服務。</p>
-                    </div>
-                    <div class="button-area">
-                        <p>進階的「TRX 質押與資源回饋」功能目前尚未啟用，啟用流程可在下方查看。</p>
-                        <div>
-                            <button class="active-btn" data-page="trx_tools" >查看可用工具</button>
-                            <button class="btn"><a href="#pagebottom">了解啟用流程</a></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- 區塊2 -->
-    <div class="col-xl-6 d-flex">
-    <div class="card flex-fill">
-        <div class="card-body">
-            <div class="inner card-rt">
-                <div class="title">
-                    <h5>TRX 質押與資源回饋</h5>
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <div class="content">
-                    <p>TRXFlow 透過 TRON 能量租借、兌換與節點分潤，建立長期的鏈上資源回饋機制。</p>
-                    <p>完成啟用流程的帳號，可以在這裡查看個人質押狀態與回饋紀錄。</p>
-                </div>
-                <div class="blur-wrapper">
-                    <div class="blur-content">
-                        <p>當期預估資源回饋：——— TRX</p>
-                        <p>累計已產生回饋：——— TRX</p>
-                    </div>
-                    <div class="blur-mask">
-                        <i class="fa-solid fa-lock"></i>
-                        <p>啟用 TRX 質押與資源回饋功能後，這裡將顯示你帳號的回饋數據。</p>
-                    </div>
-                </div>
-                <div>
-                    <button class="btn"><a href="#pagebottom">了解如何啟用 →</a></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+<div class="row d-flex align-items-stretch dashboard">
 
-    <!-- 區塊3 -->
-    <div class="col-xl-6 d-flex">
-    <div class="card flex-fill">
-        <div class="card-body">
-            <div class="inner card-bl">
-                <h5>你現在可以直接使用的工具</h5>
-                <div class="container">
-                    <div class="bl-button-area row">
-                        <div class="tools col-md-6 mb-3 mt-3">
-                            <div class="card-content">
-                                <div class="tools-card">
-                                    <button class="active-btn" style="width: 100%;">TRX 能量租借</button>
-                                    <div style="height: 50%;">
-                                        <p>用 TRX 租用能量，降低頻繁轉帳與合約操作時的鏈上成本。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tools col-md-6 mb-3 mt-3">
-                            <div class="card-content">
-                                <div class="tools-card">
-                                    <button class="active-btn" style="width: 100%;">USDT ⇄ TRX 兌換（TRC20）</button>
-                                    <div style="height: 50%;">
-                                        <p>在 TRON 上完成 TRC20 USDT 與 TRX 之間的鏈上兌換，支援小額測試與即時匯率顯示</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tools col-md-6 mb-3">
-                            <div class="card-content" style="position: relative; overflow: hidden;">
-                                <div class="tools-card" style="position: relative; z-index: 2;">
-                                    <!-- <svg
-                                        width="200%"
-                                        height="100%"
-                                        viewBox="0 0 580 190"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        style="position: absolute; inset: 0; z-index: -1; opacity: 0.9;"
-                                    >
-                                        <path
-                                            d="M680 290L197.153 -107L-111 -80.2897L-84.2585 149.138L680 290Z"
-                                            fill="url(#paint0_radial_10407_1304)"
-                                        />
-                                        <defs>
-                                            <radialGradient
-                                                id="paint0_radial_10407_1304"
-                                                cx="0"
-                                                cy="0"
-                                                r="1"
-                                                gradientUnits="userSpaceOnUse"
-                                                gradientTransform="translate(-111 -107) rotate(30.4147) scale(850.28 171.195)"
-                                            >
-                                                <stop stop-color="#00bf6c" offset="0" />
-                                                <stop stop-color="#00bf6c" stop-opacity="0.6" offset="0" />
-                                                <stop offset="0.986083" stop-color="#05050B" stop-opacity="0" />
-                                            </radialGradient>
-                                        </defs>
-                                    </svg> -->
-                                    <button class="active-btn" style="width: 100%;">節點與技術架構概覽</button>
-                                    <div style="height: 50%;">
-                                        <p>了解 TRXFlow 如何在多節點、多窗口之間調度能量與兌換流量。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tools col-md-6 mb-3">
-                            <div class="card-content">
-                                <div class="tools-card">
-                                    <button class="active-btn" style="width: 100%;">專屬 TG 兌幣機器人介紹</button>
-                                    <div style="height: 50%;">
-                                        <p>想經營自己的兌幣窗口？可先了解 TG Bot 租用服務與接入方式。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+  <!-- 區塊 1：回饋總覽 -->
+  <div class="col-12 d-flex">
+    <div class="card flex-fill mb-0">
+      <div class="card-body">
+        <div class="inner active-top">
+          <div class="title"><h5>回饋總覽</h5></div>
+          <div id="dashboard-overview"></div>
+          <!-- <div class="active-content">
 
-    <!-- 區塊4 -->
-    <div class="col-xl-6 d-flex" id="pagebottom">
-        <div class="card flex-fill">
-            <div class="card-body">
-                <div class="inner card-br">
-                    <h5>啟用 TRX 質押與資源回饋</h5>
-                    <p>為了控制風險並確認帳號活躍度，TRX 質押與資源回饋功能僅對完成啟用流程的帳號開放。</p>
-                    <p>啟用流程會評估你是否完成推薦任務（例如成功推薦 3 位會員完成註冊），詳細條件會依平台營運情況調整。</p>
-                    <h6>完成啟用後，你將可以：</h6>
-                    <ul>
-                        <li>建立 TRX 質押訂單</li>
-                        <li>查看每日/每月資源回饋報表</li>
-                        <li>查看VIP等級與推薦回饋等進階功能</li>
-                    </ul>
-                    <div class="invite-progress invite-progress-bg" style="position: relative;">
-                        <!-- <i id="editProgressBtn" class="nav-icon fa-solid fa-gear" style="position: absolute; top: 10px; right: 10px;"></i> -->
-                        <div id="progressInputArea" style="display: none;">
-                            <input type="number" id="progressInput" class="form-control mb-2" placeholder="0" min="0" max="3">
-                            <button id="applyProgressBtn">套用</button>
-                        </div>
-                        <div>
-                            <h4>啟用流程進度<i id="crown-icon" class="fa-solid fa-crown fa-rotate-by"></i></h4>
-                        </div>
-                        <div class="invite-bar">
-                            <p>
-                                推薦任務完成度：
-                            </p>
-                            <span id="progress-text"></span>
-                            <div class="progress" style="width: 100%;">
-                                <div id="usageBar" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3"></div>
-                            </div>
-                            <div class="invite-tips">
-                                <p>當好友使用你的邀請連結完成 Email 註冊後，進度條會自動更新。</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="active-data general-user">
+              <div class="data overview-row">
+                <div class="overview-left">
+                  <div class="dashboard-section01-data-title">
+                    <h3>協作回饋</h3>
+                    <span>（WEB 在線協作）</span>
+                  </div>
+                  <span class="text-muted">預估僅供參考，實際以已入帳為準</span>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="overview-right">
+                  <div class="value-row">
+                    <span class="label">當前預估回饋：</span>
+                    <span class="value">10,000.00 USDT <small>≈ 10,000.00 TRX</small></span>
+                  </div>
+                  <div class="value-row">
+                    <span class="label">實際已計入：</span>
+                    <span class="value">8,500.00 USDT <small>≈ 8,500.00 TRX</small></span>
+                  </div>
+                </div>
+              </div>
 
-    <!-- 底部小卡 -->
-    <div class="system-remind">
-        <h5>系統狀態與風險提醒</h5>
-        <div class="system-status">
-            <p>目前系統狀態：</p>
-            <p style="font-size: 14px;">運行正常</p>
-            <i class="fa-solid fa-circle"></i>
+              <div class="data overview-row">
+                <div class="overview-left">
+                  <div class="dashboard-section01-data-title">
+                    <h3>推薦回饋</h3>
+                    <span>（將於次月 1 號結算）</span>
+                  </div>
+                  <span class="text-muted">預估僅供參考，實際以每月結算入帳為準</span>
+                </div>
+                <div class="overview-right">
+                  <div class="value-row">
+                    <span class="label">累計預估回饋：</span>
+                    <span class="value">10,000.00 USDT <small>≈ 10,000.00 TRX</small></span>
+                  </div>
+                  <div class="value-row">
+                    <span class="label">實際已計入：</span>
+                    <span class="value">8,500.00 USDT <small>≈ 8,500.00 TRX</small></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="data overview-row">
+                <div class="overview-left">
+                  <div class="dashboard-section01-data-title">
+                    <h3>資源回饋</h3>
+                    <span>（進階用戶 | 質押）</span>
+                  </div>
+                  <span class="text-muted">完成進階解鎖後可使用</span>
+                </div>
+                <div class="overview-right">
+                  <div class="value-row">
+                    <span class="label">當前預估回饋：</span>
+                    <span class="value">— — <small>≈ — — TRX</small></span>
+                  </div>
+                  <div class="value-row">
+                    <span class="label">實際已計入：</span>
+                    <span class="value">— — <small>≈ — — TRX</small></span>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm mt-2">了解進階功能</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="active-data advanced-user">
+              <div class="data overview-row">
+                <div class="overview-left">
+                  <div class="dashboard-section01-data-title">
+                    <h3>協作回饋</h3>
+                    <span>（WEB 在線協作）</span>
+                  </div>
+                  <span class="text-muted">預估僅供參考，實際以已入帳為準</span>
+                </div>
+                <div class="overview-right">
+                  <div class="value-row">
+                    <span class="label">當前預估回饋：</span>
+                    <span class="value">10,000.00 USDT <small>≈ 10,000.00 TRX</small></span>
+                  </div>
+                  <div class="value-row">
+                    <span class="label">實際已計入：</span>
+                    <span class="value">8,500.00 USDT <small>≈ 8,500.00 TRX</small></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="data overview-row">
+                <div class="overview-left">
+                  <div class="dashboard-section01-data-title">
+                    <h3>推薦回饋</h3>
+                    <span>（將於次月 1 號結算）</span>
+                  </div>
+                  <span class="text-muted">預估僅供參考，實際以每月結算入帳為準</span>
+                </div>
+                <div class="overview-right">
+                  <div class="value-row">
+                    <span class="label">累計預估回饋：</span>
+                    <span class="value">10,000.00 USDT <small>≈ 10,000.00 TRX</small></span>
+                  </div>
+                  <div class="value-row">
+                    <span class="label">實際已計入：</span>
+                    <span class="value">8,500.00 USDT <small>≈ 8,500.00 TRX</small></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="data overview-row">
+                <div class="overview-left">
+                  <div class="dashboard-section01-data-title">
+                    <h3>資源回饋</h3>
+                    <span>（進階用戶 | 質押）</span>
+                  </div>
+                  <span class="text-muted">預估僅供參考，實際以已入帳為準</span>
+                </div>
+                <div class="overview-right">
+                  <div class="value-row">
+                    <span class="label">當前預估回饋：</span>
+                    <span class="value">10,000.00 USDT <small>≈ 10,000.00 TRX</small></span>
+                  </div>
+                  <div class="value-row">
+                    <span class="label">實際已計入錢包：</span>
+                    <span class="value">8,500.00 USDT <small>≈ 8,500.00 TRX</small></span>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm mt-2">申請質押/解押</button>
+                </div>
+              </div>
+            </div>
+
+          </div> -->
         </div>
-        <div class="warning-text">
-            <p>TRXFlow 專注提供 TRON 生態相關的技術服務，包含能量租借、兌換與節點資源調度等。</p>
-            <p>所有與 TRX 質押與資源回饋相關的內容，將在啟用流程中另行說明，並不構成任何形式的保本承諾。</p>
-        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- 區塊 2：操作區 -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="operation-area">
+          <h5 class="mb-3">操作區</h5>
+          <div class="operation-buttons">
+            <button id="collabMainBtn" class="active-btn btn-primary btn-lg">啟動 WEB 在線協作</button>
+            <button class="btn btn-outline-secondary btn-lg" data-page="reward_center">前往提領</button>
+          </div>
+          <p id="collabHint" class="text-muted mt-3 d-none">
+            協作視窗已開啟，請勿重複啟動
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 區塊 3：重點摘要紀錄 -->
+  <div class="col-lg-7 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="cards-title">重點摘要紀錄</h5>
+
+        <!-- 一般會員事件 -->
+        <ul class="summary-list general-user">
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-12</span><span class="hour">14:32</span></div>
+            <div class="content"><div class="event">協作啟動</div><div class="desc">WEB 在線協作</div></div>
+            <div class="status success">運行中</div>
+          </li>
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-13</span><span class="hour">00:05</span></div>
+            <div class="content"><div class="event">推薦回饋</div><div class="desc">+120.50 USDT</div></div>
+            <div class="status success">已入帳</div>
+          </li>
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-13</span><span class="hour">00:05</span></div>
+            <div class="content"><div class="event">協作回饋</div><div class="desc">+120.50 USDT</div></div>
+            <div class="status success">已入帳</div>
+          </li>
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-14</span><span class="hour">09:10</span></div>
+            <div class="content"><div class="event">申請提領</div><div class="desc">500.00 USDT</div></div>
+            <div class="status pending">處理中</div>
+          </li>
+        </ul>
+
+        <!-- 進階會員事件 -->
+        <ul class="summary-list advanced-user">
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-12</span><span class="hour">14:32</span></div>
+            <div class="content"><div class="event">協作啟動</div><div class="desc">WEB 在線協作</div></div>
+            <div class="status success">運行中</div>
+          </li>
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-13</span><span class="hour">00:05</span></div>
+            <div class="content"><div class="event">推薦回饋</div><div class="desc">+120.50 USDT</div></div>
+            <div class="status success">已入帳</div>
+          </li>
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-13</span><span class="hour">00:05</span></div>
+            <div class="content"><div class="event">協作回饋</div><div class="desc">+120.50 USDT</div></div>
+            <div class="status success">已入帳</div>
+          </li>
+          <li class="summary-item">
+            <div class="time"><span class="date">2025-01-14</span><span class="hour">09:10</span></div>
+            <div class="content"><div class="event">申請提領</div><div class="desc">500.00 USDT</div></div>
+            <div class="status pending">處理中</div>
+          </li>
+          <li class="summary-item">
+            <div class="time"><div class="event">資源回饋（質押）</div><div class="desc">+50.00 USDT</div></div>
+            <div class="status success">已入帳</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 區塊 4：身份進度卡 -->
+  <div class="col-lg-5 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <!-- 一般會員 -->
+        <div class="identity-card is-basic general-user">
+          <h5 class="cards-title mb-3">進階解鎖</h5>
+          <p class="mb-2">推薦 <strong>2 位</strong> 完成協作啟動即可解鎖進階功能</p>
+          <div class="progress mb-2"><div class="progress-bar bg-primary" style="width: 50%"></div></div>
+          <p class="text-muted mb-3">已完成推薦 1 / 2</p>
+          <div class="referral-box">
+            <input type="text" class="form-control form-control-sm" value="https://trxflow.io/invite/abc123" readonly>
+            <div class="referral-btn-area">
+              <button class="active-btn btn-sm btn-outline-primary">複製鏈結</button>
+              <button class="btn btn-sm btn-outline-secondary">分享</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 進階會員 -->
+        <div class="identity-card advanced-user">
+          <h5 class="cards-title mb-3">等級進度</h5>
+          <p>目前等級：<strong>Gold</strong></p>
+          <div class="progress mb-2"><div class="progress-bar bg-primary" style="width: 70%"></div></div>
+          <p class="text-muted">距離下一級：完成 3 筆協作</p>
+          <button class="btn btn-outline-secondary btn-sm">查看等級規則</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 區塊 5：系統狀態 -->
+  <div class="system-remind">
+    <h5>系統狀態</h5>
+    <div class="system-status">
+      <p>目前系統狀態：</p>
+      <p style="font-size: 14px;">運行正常</p>
+      <i class="fa-solid fa-circle"></i>
+    </div>
+  </div>
+
 </div>

@@ -5,16 +5,17 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">TRX 資源回饋概況</h2>
+          <h5 class="title">TRX 資源回饋概況</h5>
         </div>
         <div class="card-body fb-content">
           <div class="fb-info-left">
-            <div class="fb-info">
+            <div id="reward-overview"></div>
+            <!-- <div class="fb-info">
               <p>資源運行中： <span class="fb-price">x,xxx</span> TRX</p>
               <span class="fb-info-tip" >目前在 TRX 資源回饋機制中運行的 TRX 總額。</span>
-            </div>
+            </div> -->
             <div class="fb-info">
-              <p>申請處理中： <span class="fb-price">x,xxx</span> TRX</p>
+              <p>申請處理中： <span class="fb-price">x,xxx</span> USDT<span> ≈ x.xxx TRX</span></p>
               <span class="fb-info-tip">已發起資源退回/調整申請，系統排程處理中的總額。</span>
             </div>
           </div>
@@ -24,66 +25,47 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="row" id="rewardArea">
-    <div class="col-md-5 d-flex" style="padding: 0.35rem;">
-      <div class="card flex-fill">
+    <div class="col-12">
+      <div class="card">
         <div class="card-header">主要操作列（建立＋退回）</div>
         <div class="card-body">
           <div class="fb-left">
             <button class="active-btn create-resource-btn">建立新資源配置</button>
-            <button class="active-btn" id="open-return-resource-btn">資源退回</button>
+            <button class="btn open-return-resource-btn" id="open-return-resource-btn">資源退回</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-md-7 d-flex" style="padding: 0.25rem;">
+  <div class="row" id="rewardArea">
+    <div class="col-md-6 d-flex" style="padding: 0.25rem;">
       <div class="card flex-fill">
         <div class="card-header">我的資源配置</div>
         <div class="card-body">
             <div id="resource-all-card" class="asset-all-card">
-              <div id="resource-content" class="resource-card d-none">
-                <div class="asset-table-header">
-                  <span>金額</span>
-                  <span>建立時間</span>
-                  <span>生效時間</span>
-                  <span class="asset-state">狀態</span>
+                <div id="resource-content" class="resource-card d-none">
+                    <div class="asset-table-header">
+                      <span>金額</span>
+                      <span>建立時間</span>
+                      <span>生效時間</span>
+                      <span class="asset-state">狀態</span>
+                    </div>
+                    <ul id="resource-list" class="asset-list">
+                      
+                    </ul>
+                    <div class="asset-btn feedback-btn">
+                        <button>查看詳情</button>
+                    </div>
                 </div>
-                <ul id="resource-list" class="asset-list">
-                    
-                </ul>
-                <div class="asset-btn feedback-btn">
-                  <button>查看詳情</button>
+
+                <!-- 空狀態 -->
+                <div id="resource-empty" class="no-asset d-none">
+                    <h6>你尚未建立任何 TRX 資源配置</h6>
+                    <p style="font-size: 12px; color: #999;">建立第一筆資源配置後，你將在這裡看到所有正在運行中的部位和狀態。</p>
+                    <button class="active-btn create-resource-btn">建立第一筆資源配置</button>
                 </div>
-              </div>
-              <div id="resource-empty" class="no-asset d-none">
-                <h6>你尚未建立任何 TRX 資源配置</h6>
-                <p style="font-size: 12px; color: #999;">建立第一筆資源配置後，你將在這裡看到所有正在運行中的部位和狀態。</p>
-                <button class="active-btn create-resource-btn">建立第一筆資源配置</button>
-              </div>
             </div>
-            <div id="return-resource-card" class="card mt-3">
-            <div class="card-header">資源退回清單</div>
-            <div class="card-body">
-              <div id="return-resource-content" class="d-none">
-                <div class="asset-table-header">
-                  <span>申請時間</span>
-                  <span>申請金額</span>
-                  <span>處理通道</span>
-                  <span>狀態</span>
-                </div>
-                <ul id="return-resource-list" class="asset-list"></ul>
-              </div>
-              <div id="return-resource-empty" class="no-asset d-none">
-                <h6>目前沒有任何資源退回申請</h6>
-                <p style="font-size: 12px; color: #999;">
-                  當你透過「資源退回」發起申請後，處理進度會顯示在這裡。
-                </p>
-              </div>
-            </div>
-          </div>
             <!-- 建立新資源 Modal -->
             <div class="modal fade" id="createResourceModal" tabindex="-1">
               <div class="modal-dialog">
@@ -142,11 +124,38 @@
                 </div>
               </div>
             </div>
-
-            <!-- 申請紀錄列表 -->
-            <ul id="return-records" class="mt-3"></ul>
-
           </div>
       </div>
     </div>
+    <div class="col-md-6 d-flex" style="padding: 0.25rem;">
+      <div class="card flex-fill" id="return-resource-card">
+        <div class="card-header">申請紀錄</div>
+        <div class="card-body">
+            <div id="return-resource-content" class="d-none">
+              <div class="asset-table-header">
+                <span>申請金額</span>
+                <span>申請時間</span>
+                <span>確認時間</span>
+                <span>狀態</span>
+              </div>
+              <ul id="return-resource-list" class="asset-list"></ul>
+            </div>
+
+            <!-- 空狀態 -->
+            <div id="return-resource-empty" class="no-asset d-none">
+              <h6>目前沒有任何資源退回申請</h6>
+              <p style="font-size: 12px; color: #999;">
+                當你透過「資源退回」發起申請後，處理進度會顯示在這裡。
+              </p>
+            </div>
+            <div class="mt-2">
+              <button id="open-return-resource-btn" class="active-btn open-return-resource-btn">申請資源退回</button>
+            </div>
+            <ul id="return-records" class="mt-3"></ul>
+        </div>
+      </div>
+    </div>
+    
   </div>
+
+  

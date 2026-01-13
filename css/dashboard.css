@@ -1,0 +1,178 @@
+/* 每一列 */
+.overview-row {
+    /* background: red; */
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    margin: 0 6rem;
+    gap: 2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* 左側 */
+.overview-left {
+    flex: 0 0 40%;
+}
+
+.dashboard-section01-data-title {
+    display: flex;
+    width: max-content;
+}
+
+.dashboard-section01-data-title span {
+    height: 100%;
+    align-self: flex-end;
+}
+
+.overview-left h3 {
+    margin-bottom: 0;
+}
+
+/* 右側 */
+.overview-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+/* 右側每一行 */
+.value-row {
+    display: flex;
+    justify-content: space-between; /* ← 關鍵 */
+    align-items: baseline;
+}
+
+.value {
+    display: flex;
+    font-size: 20px;
+}
+
+.value small {
+    display: block;
+    font-size: 16px;
+    opacity: .7;
+}
+
+/* 區塊3 */
+.summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item .time {
+    width: 90px;
+    font-size: 12px;
+    opacity: .7;
+}
+
+.summary-item .content {
+    flex: 1;
+}
+
+.summary-item .event {
+    font-weight: 600;
+}
+
+.summary-item .desc {
+    font-size: 13px;
+    opacity: .8;
+}
+
+.summary-item .status {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.status.success {
+    background: rgba(40,167,69,.15);
+    color: #28a745;
+}
+
+.status.pending {
+    background: rgba(255,193,7,.15);
+    color: #ffc107;
+}
+
+.referral-btn-area {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 1rem;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-section01-data-title {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .value {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1000px) {
+    .data {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 540px) {
+    .overview-row {
+        text-align: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .overview-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .dashboard-section01-data-title {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dashboard-section01-data-title span {
+        height: 100%;
+        align-self: center;
+    }
+
+    .value-row {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .label {
+        font-size: 14px;
+        text-wrap: nowrap;
+        width: 100%;
+    }
+}
+
+.hidden {
+    display: none !important;
+}

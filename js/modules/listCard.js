@@ -6,8 +6,8 @@ const feedbackHistory = [
 ];
 
 const resourcesList = [
-  { price:'333', date1: "2025/12/15", date2: "2025/12/15", state: "審核中"},
-  { price:'333', date1: "2025/12/15", date2: "2025/12/15", state: "審核中"},
+  // { price:'333', date1: "2025/12/15", date2: "2025/12/15", state: "審核中"},
+  // { price:'333', date1: "2025/12/15", date2: "2025/12/15", state: "審核中"},
 ]; // 建立資源清單
 const returnResourceList = []; // 退回資源清單
 
@@ -81,29 +81,26 @@ function renderResourceList(resources) {
 
 // -------------------- 回饋中心退回清單 -------------------- //
 function renderReturnResourceList(returns) {
-  const listEl = document.getElementById('return-records');
-  const emptyText = document.getElementById('return-empty-text');
-  if (!listEl || !emptyText) return;
+  const listEl = document.getElementById('return-resource-list');
+  const emptyEl = document.getElementById('return-resource-empty');
+  const contentEl = document.getElementById('return-resource-content')
+  if (!listEl || !emptyEl || !contentEl) return;
 
-  if (!returns || returns.length === 0) {
-    emptyText.classList.remove('d-none');
-    listEl.classList.add('d-none');
-  } else {
-    emptyText.classList.add('d-none');
-    listEl.classList.remove('d-none');
+  toggleCard('return-resource-card', 'return-resource-content', 'return-resource-empty', returns)
 
-    listEl.innerHTML = '';
-    returns.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <span>申請時間：${item.date}</span>
-        <span>申請金額：${item.amount} TRX（約 ${item.usdt} USDT）</span>
-        <span>處理通道：${item.channel}</span>
-        <span>狀態：${item.status}</span>
-      `;
-      listEl.appendChild(li);
-    });
-  }
+  if (!returns || returns.length === 0) return
+
+  listEl.innerHTML = '';
+  returns.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span>${item.date}</span>
+      <span>${item.amount} TRX（約 ${item.usdt} USDT）</span>
+      <span>${item.channel}</span>
+      <span>${item.status}</span>
+    `;
+    listEl.appendChild(li);
+  });
 }
 
 // -------------------- 初始化首頁 -------------------- //
@@ -142,11 +139,11 @@ function initResourceCenter() {
   });
 
   // 退回資源 Modal
-  setupReturnResourceModal('normal');
+  setupReturnResourceModal();
 }
 
 // -------------------- 退回資源 Modal -------------------- //
-function setupReturnResourceModal(memberLevel = 'normal') {
+function setupReturnResourceModal() {
   const $modal = $('#returnResourceModal');
   const $input = $modal.find('#return-amount');
   const $cancel = $modal.find('#return-cancel-btn, .btn-close');
@@ -154,13 +151,22 @@ function setupReturnResourceModal(memberLevel = 'normal') {
   const $warning = $modal.find('#large-amount-warning');
   const $channel = $modal.find('#channel-info');
 
-  $('#open-return-resource-btn').on('click', function () {
+  $('.open-return-resource-btn').on('click', function () {
     $input.val('');
     $warning.hide();
-    $channel.text(memberLevel === 'VIP'
-      ? '你目前為 VIP 等級，系統會優先處理本次資源退回申請；如金額較大，部分可能分批釋出。'
-      : '本次申請將依「一般通道」與排程時間處理；VIP 可享更高優先權。'
-    );
+
+    const isAdvanced = AppState.user.isServiceEnabled === true;
+
+    if(isAdvanced) {
+      $channel.text(
+        '你目前享有較高的處理優先權；如金額較大，部分金額仍可能分批釋出與排程處理。'
+      );
+    }else {
+      $channel.text(
+        '本次申請將依「一般通道」與排程時間處理；達到較高等級後，可享更高的處理優先權。'
+      )
+    }
+
     $modal.modal('show');
   });
 
@@ -178,7 +184,7 @@ function setupReturnResourceModal(memberLevel = 'normal') {
       date,
       amount: value,
       usdt: Math.round(value / 10), // 模擬換算
-      channel: memberLevel === 'VIP' ? 'VIP 優先' : '一般通道',
+      channel: AppState.user.isServiceEnabled ? '優先通道' : '一般通道',
       status: '審核中'
     });
 

@@ -1,89 +1,137 @@
+// router.js - 依 AppState.js 狀態管理頁面與用戶內容顯示
+
+// 取得預設頁面
 function getDefaultPage() {
-    return AppState.user.isServiceEnabled ? 'activeDashboard' : 'dashboard'
+    return 'dashboard';
 }
 
-// 動態載入頁面
+// 根據用戶狀態顯示對應內容
+function renderUserContent() {
+    const isAdvanced = AppState.user.isServiceEnabled;
+
+    document.querySelectorAll('.general-user').forEach(el => {
+        el.style.display = isAdvanced ? 'none' : 'block';
+    });
+    document.querySelectorAll('.advanced-user').forEach(el => {
+        el.style.display = isAdvanced ? 'block' : 'none';
+    });
+}
+
+// 動態載入頁面 HTML
 async function loadPage(page) {
-    const container = document.getElementById('page-container')
-    if (!container) return console.log("找不到 #page-container")
+    const container = document.getElementById('page-container');
+    if (!container) return console.error("找不到 #page-container");
 
     try {
-        const res = await fetch(`pages/${page}.html`)
-        let htmlText = await res.text()
+        const res = await fetch(`pages/${page}.html`);
+        let htmlText = await res.text();
 
-        htmlText = htmlText.replace(/<!-- Code injected by live-server -->[\s\S]*?<\/script>/gi, '')
-        container.innerHTML = htmlText
+        // 移除 live-server 自動插入的 script
+        htmlText = htmlText.replace(/<!-- Code injected by live-server -->[\s\S]*?<\/script>/gi, '');
+        container.innerHTML = htmlText;
 
-        renderHeader()
-        initCardsAfterPageLoad()
+        // 依 AppState 顯示 header / sidebar / user content
+        renderHeader();
+        renderSidebar();
+        initCardsAfterPageLoad();
+        renderUserContent();
 
-        if(document.getElementById('usageBar')) {
-            ProgressManager.init()
-            AppState.initProgress()
+        afterPageLoad(page)
+
+        if (document.getElementById('usageBar')) {
+            ProgressManager.init();
+            AppState.initProgress();
         }
 
     } catch (err) {
-        console.error("載入頁面失敗:", err)
-        container.innerHTML = `<p>頁面載入失敗，請稍後再試。</p>`
+        console.error("載入頁面失敗:", err);
+        container.innerHTML = `<p>頁面載入失敗，請稍後再試。</p>`;
     }
 }
 
 // 切換頁面
-async function goToPage(page, scroll) {
-    AppState.currentPage = page
+async function goToPage(page, scroll = 0) {
+    AppState.currentPage = page;
 
-    renderSidebar()
+    await loadPage(page);
 
-    await loadPage(page)
+    // 滾動到指定位置
+    const container = document.getElementById('page-container');
+    if (!container) return;
 
-    // 更新 sidebar 選中狀態
-    // const links = document.querySelectorAll('#sidebarMenu a.nav-link')
-    // links.forEach(a => a.classList.remove('active'))
-    // const activeLink = document.querySelector(`#sidebarMenu a.nav-link[data-page="${page}"]`)
-    // if (activeLink) activeLink.classList.add('active')
-
-    const container = document.getElementById('page-container')
-    if(!container) return
-
-    if(scroll) {
-        if(!isNaN(scroll)) {
-            window.scrollTo({top: parseInt(scroll), behavior: 'smooth'})
-        }else {
-            let y = 0
-            switch(scroll) {
-                case 'top': y = 0; break
-                case 'middle': y = container.scrollHeight / 2 - window.innerHeight / 2; break
-                case 'bottom': y = container.scrollHeight - window.innerHeight; break
+    let y = 0;
+    if (scroll) {
+        if (!isNaN(scroll)) {
+            y = parseInt(scroll);
+        } else {
+            switch (scroll) {
+                case 'top': y = 0; break;
+                case 'middle': y = container.scrollHeight / 2 - window.innerHeight / 2; break;
+                case 'bottom': y = container.scrollHeight - window.innerHeight; break;
                 default:
-                    const el = document.getElementById(scroll)
-                    if(el) y = el.offsetTop 
+                    const el = document.getElementById(scroll);
+                    if (el) y = el.offsetTop;
             }
-            window.scrollTo({top: y, behavior: 'smooth'})
         }
-    }else {
-        window.scrollTo({top: 0, behavior: 'smooth'})
     }
+    window.scrollTo({ top: y, behavior: 'smooth' });
 }
 
-// 初始化頁面
-document.addEventListener('DOMContentLoaded', () => {
-    const defaultPage = getDefaultPage()
-    AppState.currentPage = defaultPage
-    renderSidebar()
-    bindSidebarEvents()
-    loadPage(defaultPage)
+function afterPageLoad(page) {
+    if(page === 'dashboard') {
+        if(typeof renderOverview === 'function') {
+            renderOverview('dashboard-overview')
+        }
+    }
+    if(page === 'reward_center') {
+        if(typeof renderOverview === 'function') {
+            renderOverview('reward-overview')
+        }
+    }
+    initOperationArea()
+    renderHeader()
+}
 
+// 初始化 sidebar 點擊事件
+function bindSidebarEvents() {
+    document.querySelectorAll('#sidebarMenu a.nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const page = link.dataset.page;
+            if (page) goToPage(page);
+        });
+    });
+}
+
+// 初始化整個網站
+document.addEventListener('DOMContentLoaded', async () => {
+    const defaultPage = getDefaultPage();
+    AppState.currentPage = defaultPage;
+
+    renderSidebar();
+    bindSidebarEvents();
+
+    // 頁面載入
+    await loadPage(defaultPage);
+
+    // 監聽全站點擊可切換頁面
     document.addEventListener('click', e => {
-        const target = e.target.closest('[data-page]')
-        if(!target) return
-        if(target.closest('#sidebarMenu')) return
+        const target = e.target.closest('[data-page]');
+        if (!target) return;
+        if (target.closest('#sidebarMenu')) return;
 
-        e.preventDefault()
+        e.preventDefault();
 
-        const page = target.dataset.page
-        const scroll = target.dataset.scroll
-        if(!page) return
+        const page = target.dataset.page;
+        const scroll = target.dataset.scroll;
+        if (!page) return;
 
         goToPage(page, scroll);
-    })
+    });
 });
+
+// 可在 AppState.user.isServiceEnabled 改變時呼叫此函式更新頁面
+function refreshPageByUserStatus() {
+    renderSidebar();
+    renderUserContent();
+}
